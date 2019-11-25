@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1574334540 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/globaldata.c
+	"globaldata.h"
+
+1574334401 /home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/globaldata.h
+	<stdio.h>
+
+1574337531 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/initializer.c
+	"initializer.h"
+	"globaldata.h"
+	<math.h>
+
+1574334457 /home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/initializer.h
+	<stdio.h>
+	<stdlib.h>
+
+1574334641 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/main.c
+	<stdio.h>
+	"initializer.h"
+	"running.h"
+
+1574334489 /home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/running.h
+	<stdio.h>
+
+1574334598 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/running.c
+	"running.h"
+	"globaldata.h"
+	"timing.h"
+	<stdlib.h>
+	<math.h>
+
+1574334516 /home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/timing.h
+	<time.h>
+
+1574334616 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/timing.c
+	<stdio.h>
+	"timing.h"
+	"globaldata.h"
+	<sys/time.h>
+
+1574334138 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1/main.cpp
+	<iostream>
+
