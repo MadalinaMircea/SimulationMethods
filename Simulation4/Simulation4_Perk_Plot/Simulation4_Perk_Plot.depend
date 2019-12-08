@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1575815712 source:/home/madalina/Documents/Simulation Methods/Simulation4/Simulation4_Perk_Plot/drawing.cpp
+	"drawing.h"
+	"globaldata.h"
+	<math.h>
+	<unistd.h>
+	<GL/glut.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1533678423 /home/madalina/Documents/Simulation Methods/Simulation4/Simulation4_Perk_Plot/drawing.h
+	"globaldata.h"
+
+1541762786 /home/madalina/Documents/Simulation Methods/Simulation4/Simulation4_Perk_Plot/globaldata.h
+	<stdio.h>
+
