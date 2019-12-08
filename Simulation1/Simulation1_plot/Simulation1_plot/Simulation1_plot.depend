@@ -14,13 +14,13 @@
 1574334817 /home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/globaldata.h
 	<stdio.h>
 
-1574338426 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/globaldata.cpp
+1575807564 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/globaldata.cpp
 	"globaldata.h"
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
 
-1574339627 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/main.cpp
+1574339872 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/main.cpp
 	<math.h>
 	<stdio.h>
 	<stdlib.h>

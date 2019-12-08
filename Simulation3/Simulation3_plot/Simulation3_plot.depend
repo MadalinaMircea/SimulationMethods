@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1575810095 source:/home/madalina/Documents/Simulation Methods/Simulation3/Simulation3_plot/drawing.cpp
+	"drawing.h"
+	"globaldata.h"
+	<math.h>
+	<unistd.h>
+	<GL/glut.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1533678423 /home/madalina/Documents/Simulation Methods/Simulation3/Simulation3_plot/drawing.h
+	"globaldata.h"
+
+1541762786 /home/madalina/Documents/Simulation Methods/Simulation3/Simulation3_plot/globaldata.h
+	<stdio.h>
+
+1541763154 source:/home/madalina/Documents/Simulation Methods/Simulation3/Simulation3_plot/main.cpp
+	<math.h>
+	<stdio.h>
+	<stdlib.h>
+	"globaldata.h"
+	"drawing.h"
+

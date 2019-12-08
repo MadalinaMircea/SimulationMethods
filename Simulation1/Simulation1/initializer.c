@@ -151,7 +151,7 @@ printf("N_particles = %d placed\n",global.N_particles);
 
 void init_files()
 {
-global.moviefile = fopen("/home/madalina/Desktop/particles.mvi","wb");
+global.moviefile = fopen("../../../particles.mvi","wb");
 if (global.moviefile == NULL)
     {
     printf("Could not create/open movie file\n");

@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1575808713 source:/home/madalina/Documents/Simulation Methods/Simulation2/Simulation2_plot/drawing.cpp
+	"drawing.h"
+	"globaldata.h"
+	<math.h>
+	<unistd.h>
+	<GL/glut.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1571413508 /home/madalina/Documents/Simulation Methods/Simulation2/Simulation2_plot/drawing.h
+	"globaldata.h"
+
+1541762786 /home/madalina/Documents/Simulation Methods/Simulation2/Simulation2_plot/globaldata.h
+	<stdio.h>
+
