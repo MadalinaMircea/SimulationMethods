@@ -30,7 +30,7 @@ void initialize_global_data()
     global.radius_vertex = 0.01;
     global.radius_particle = 0.005;
 
-    strcpy(global.moviefilename,"../dla.mvi");
+    strcpy(global.moviefilename,"../dla10.mvi");
 
     global.N_frames = 0;
     global.current_frame = 0;

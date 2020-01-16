@@ -6,19 +6,86 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include <stdbool.h>
+
 
 #define N_grid 100
+#define N_realizations 10
 
 int grid[N_grid][N_grid]; // holding the particles (perconalted sites)
-int cluster_number[N_grid][N_grid]; //hold the cluster number
+int cluster_number[N_grid][N_grid];
+int cluster_size[N_grid/2 * N_grid/2]; //hold the cluster number
 // does not belong to any cluster == -1
 
 int actual_cluster;
+
+int max_size_sum = 0;
+int max_size_nr = 0;
+
+double realizations_avg[N_realizations];
 
 double  p; ///probability of picking the site
 
 FILE *moviefile;
 int t;
+
+bool left_to_right(int cluster)
+{
+    bool left = false, right = false;
+int i;
+    for(i = 0; i < N_grid; i++)
+    {
+        if(cluster_number[i][0] == cluster)
+        {
+            left = true;
+        }
+
+        if(cluster_number[i][N_grid-1] == cluster)
+        {
+            right = true;
+        }
+    }
+
+    return (left && right);
+}
+
+bool top_to_bottom(int cluster)
+{
+    bool top = false, bottom = false;
+int i;
+    for(i = 0; i < N_grid; i++)
+    {
+        if(cluster_number[0][i] == cluster)
+        {
+            top = true;
+        }
+
+        if(cluster_number[N_grid - 1][i] == cluster)
+        {
+            bottom = true;
+        }
+    }
+
+    return (top && bottom);
+}
+
+bool is_spanning(int cluster)
+{
+    return (left_to_right(cluster) || top_to_bottom(cluster));
+}
+
+bool contains_spanning_cluster()
+{
+    int i;
+    for(i = 1; i <= actual_cluster; i++)
+    {
+        if(is_spanning(i))
+        {
+            return true;
+        }
+    }
+    return false;
+}
 
 void initialize_system()
 {
@@ -29,6 +96,33 @@ void initialize_system()
             grid[i][j] = 0; //have not picked any sites
             cluster_number[i][j] = -1;//nobody is in a cluster
             }
+
+    for(i=0;i<N_grid/2 * N_grid/2;i++)
+        cluster_size[i] = 0;
+}
+
+int find_max_size(int arr[])
+{
+int i;
+int maxx = 0;
+    for(i=0;i<N_grid/2 * N_grid/2;i++)
+        if(arr[i] >maxx)
+        {
+        maxx = arr[i];
+        }
+    return maxx;
+}
+
+double find_max(double arr[])
+{
+int i;
+int maxx = 0;
+    for(i=0;i<N_grid/2 * N_grid/2;i++)
+        if(arr[i] >maxx)
+        {
+        maxx = arr[i];
+        }
+    return maxx;
 }
 
 void fill_system_with_probability(double p)
@@ -59,6 +153,7 @@ void recursive_clusternumber(int i,int j)
 {
 
     cluster_number[i][j] = actual_cluster;
+    cluster_size[actual_cluster] ++;
 
     if ((i+1<N_grid))
         //find a position to the right of the actual position
@@ -141,9 +236,14 @@ int main(int argc, const char * argv[]) {
     p = 0.6;
     t = 0;
 
+    int i;
+
+    double spanning_probability;
+
+    for(i = 0; i < N_realizations; i++)
+    {
+    int nr_percolating_frames = 0;
     moviefile = fopen("../perk.mvi","wb");
-
-
     for(t=0;t<100;t++)
         {
             //srand(1446742268);
@@ -159,10 +259,38 @@ int main(int argc, const char * argv[]) {
             // - probability of a spanning cluster in the system (probability of percolation)
 
             clusterize_system();
+
+            max_size_sum += find_max_size(cluster_size);
+            max_size_nr++;
+
+            if(contains_spanning_cluster())
+            {
+                nr_percolating_frames++;
+            }
+
             write_cmovie();
         }
 
+    realizations_avg[i] = max_size_sum / (double)max_size_nr;
+
+    spanning_probability += nr_percolating_frames;
+
     fclose(moviefile);
+    }
+
+    double max_avg = find_max(realizations_avg);
+
+    printf("Average max cluster size for %d realizations: %f", N_realizations, max_avg);
+
+    FILE * pFile;
+
+//    pFile = fopen ("../perk_p_90.in","a");
+//    fprintf (pFile, "%d %f\n", N_grid, max_avg);
+//    fclose (pFile);
+
+    pFile = fopen ("../spanning_p_70.in","a");
+    fprintf (pFile, "%d %f\n", N_grid, spanning_probability / (N_realizations * 100));
+    fclose (pFile);
 
     return 0;
 }

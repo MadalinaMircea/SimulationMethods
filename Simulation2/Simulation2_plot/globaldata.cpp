@@ -30,7 +30,7 @@ void initialize_global_data()
     global.radius_vertex = 0.01;
     global.radius_particle = 0.02;
 
-    strcpy(global.moviefilename,"../../../particles.mvi");
+    strcpy(global.moviefilename,"../strength3.mvi");
 
     global.N_frames = 0;
     global.current_frame = 0;

@@ -28,16 +28,17 @@ int main(int argc, const char * argv[])
     printf("Simulation Methods Course, 2018\n");
     printf("#1 Assignment Molecular Dynamics (Brownian Dynamics) simulation\n");
     printf("Unpotimized version (slowest)\n");
-   
+
+
     init_simulation();
     init_simulation_box();
 
     init_particles();
-    init_pinningsites_randomly();
-    
+    init_pinningsites_randomly(100);
+
     init_files();
-    
+
     run_simulation();
-    
+
     return 0;
 }

@@ -185,13 +185,13 @@ printf("N_particles = %d placed\n",global.N_particles);
 
 void init_files()
 {
-global.moviefile = fopen("../../../particles.mvi","wb");
+global.moviefile = fopen("../strength3.mvi","wb");
 if (global.moviefile == NULL)
     {
     printf("Could not create/open movie file\n");
     exit(2);
     }
-global.statisticsfile = fopen("statistics.txt","wt");
+global.statisticsfile = fopen("../statsstrength30.txt","wt");
 if (global.statisticsfile == NULL)
     {
     printf("Could not create/open statistics file\n");
@@ -201,7 +201,7 @@ if (global.statisticsfile == NULL)
 }
 
 
-void init_pinningsites_randomly()
+void init_pinningsites_randomly(int ps)
 {
 double r_min;
 int i,j;
@@ -209,10 +209,10 @@ double x_try,y_try;
 int overlap,N_trials;
 double dr;
 
-global.N_pinningsites = 100;
+global.N_pinningsites = ps;
 global.pinning_Radius = 1.5;
 global.pinning_Radius2 = global.pinning_Radius * global.pinning_Radius;
-global.pinning_force = 1.0;
+global.pinning_force =3.0;
 
 global.pinning_x = (double *)malloc(global.N_pinningsites*sizeof(double));
 global.pinning_y = (double *)malloc(global.N_pinningsites*sizeof(double));

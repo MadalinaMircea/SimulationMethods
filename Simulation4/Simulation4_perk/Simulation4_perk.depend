@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1579180912 source:/home/madalina/Documents/Simulation Methods/Simulation4/Simulation4_perk/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<stdbool.h>
+

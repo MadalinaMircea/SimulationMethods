@@ -14,3 +14,17 @@
 1541762786 /home/madalina/Documents/Simulation Methods/Simulation2/Simulation2_plot/globaldata.h
 	<stdio.h>
 
+1579199383 source:/home/madalina/Documents/Simulation Methods/Simulation2/Simulation2_plot/main.cpp
+	<math.h>
+	<stdio.h>
+	<stdlib.h>
+	"globaldata.h"
+	"drawing.h"
+	<iostream>
+
+1579197705 source:/home/madalina/Documents/Simulation Methods/Simulation2/Simulation2_plot/globaldata.cpp
+	"globaldata.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+

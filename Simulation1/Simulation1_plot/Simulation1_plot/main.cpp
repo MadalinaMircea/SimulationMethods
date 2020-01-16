@@ -40,7 +40,8 @@ void plotGraph()
 {
     char * commandsForGnuplot[] = {"set title \"Simulation Graph\"",
     "set grid", "set term x11 solid lw 4",
-    "plot [0:2000] [0:2300] '../../unoptimized.in' with linespoints lc rgb 'orange', '../../verlet.in' with linespoints lc rgb 'blue', '../../tabulated.in' with linespoints lc rgb 'green'"};
+ //   "plot '../../verlet.in' with linespoints lc rgb 'blue', '../../tabulated.in' with linespoints lc rgb 'green'"};
+    "plot '../../unoptimized.in' with linespoints lc rgb 'orange', '../../verlet.in' with linespoints lc rgb 'blue', '../../tabulated.in' with linespoints lc rgb 'green'"};
     FILE * gnuplotPipe = popen ("gnuplot -persistent", "w");
 
     int i;

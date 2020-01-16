@@ -92,7 +92,9 @@ void does_it_stick()
 
     r = rand()/(RAND_MAX+1.0);
 
-    if (r<0.5)
+    double p = 0.1;
+
+    if (r<p)
     //if it has a neighbor grid site that is occupied
     //nearest neighbor (right, left,up,down)
     // grid[randomwalker_x+1][randomwalker_y+1]
@@ -173,7 +175,7 @@ int main(int argc, const char * argv[]) {
 
     printf("Diffusion Limited Aggregation\n");
 
-    moviefile = fopen("../dla.mvi","wb");
+    moviefile = fopen("../dla10.mvi","wb");
     init_grid();
     init_randomwalker();
 

@@ -10,7 +10,7 @@
 
 struct global_struct global;
 
-void initialize_global_data()
+void initialize_global_data(int file)
 {
 
     global.Windowsize_x = 1280;
@@ -30,7 +30,7 @@ void initialize_global_data()
     global.radius_vertex = 0.01;
     global.radius_particle = 0.012;
 
-    strcpy(global.moviefilename,"../perk.mvi");
+    strcpy(global.moviefilename,global.files[file]);
 
     global.N_frames = 0;
     global.current_frame = 0;
