@@ -22,20 +22,34 @@
 
 #include "initializer.h"
 #include "running.h"
+#include "globaldata.h"
 
 int main(int argc, const char * argv[])
 {
     printf("Simulation Methods Course, 2018\n");
     printf("#1 Assignment Molecular Dynamics (Brownian Dynamics) simulation\n");
     printf("Unpotimized version (slowest)\n");
-   
-    init_simulation();
-    init_simulation_box();
 
-    init_particles();
+    int particles = 800;
+    double boxX = 60.0;
+
+    double ratio = (double)particles / boxX;
+
+    printf("Ratio particles/box: %f\n", ratio);
+
+    while(particles <= 800)
+    {
+    init_simulation();
+    init_simulation_box(boxX, boxX);
+
+    init_particles(particles);
     init_files();
-    
+
     run_simulation();
-    
+
+    particles += 200;
+    boxX = (double)particles / ratio;
+    }
+
     return 0;
 }

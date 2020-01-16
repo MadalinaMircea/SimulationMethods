@@ -19,7 +19,7 @@ int clock_gettime(int clk_id, struct timespec* t) {
     return 0;
 }
 
-#define CLOCK_REALTIME 0 
+#define CLOCK_REALTIME 0
 #define CLOCK_MONOTONIC 0
 */
 #endif
@@ -39,7 +39,7 @@ clock_gettime(CLOCK_MONOTONIC, &program_finish_time);
 }
 
 
-void echo_running_time()
+double echo_running_time()
 {
 double time_expired;
 time_t time_endtime;
@@ -51,4 +51,6 @@ timeinfo = localtime(&time_endtime);
 
 printf("Run finished on: %s",asctime(timeinfo));
 printf("Program running time was: %.2lf seconds\n",time_expired);
+
+return time_expired;
 }

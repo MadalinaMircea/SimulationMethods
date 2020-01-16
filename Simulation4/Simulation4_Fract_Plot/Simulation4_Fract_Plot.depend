@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1575816022 source:/home/madalina/Documents/Simulation Methods/Simulation4/Simulation4_Fract_Plot/drawing.cpp
+	"drawing.h"
+	"globaldata.h"
+	<math.h>
+	<unistd.h>
+	<GL/glut.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1533678423 /home/madalina/Documents/Simulation Methods/Simulation4/Simulation4_Fract_Plot/drawing.h
+	"globaldata.h"
+
+1575816022 /home/madalina/Documents/Simulation Methods/Simulation4/Simulation4_Fract_Plot/globaldata.h
+	<stdio.h>
+
+1575816022 source:/home/madalina/Documents/Simulation Methods/Simulation4/Simulation4_Fract_Plot/globaldata.cpp
+	"globaldata.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1575816022 source:/home/madalina/Documents/Simulation Methods/Simulation4/Simulation4_Fract_Plot/main.cpp
+	<math.h>
+	<stdio.h>
+	<stdlib.h>
+	"globaldata.h"
+	"drawing.h"
+

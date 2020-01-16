@@ -24,31 +24,37 @@ get_starting_time();
 
 for(global.time=0;global.time<global.total_time;global.time++)
     {
-    
+
     calculate_external_forces_on_particles();
     calculate_pairwise_forces();
-   
+
     move_particles();
     check_Verlet_rebuild_condition_and_set_flag();
     //one particle moved enough to rebuild the Verlet list
     if (global.flag_to_rebuild_Verlet==1)
         rebuild_Verlet_list();
-        
+
     //echo time
     if (global.time % global.echo_time == 0)
         {
         printf("Timestep: %d / %d\n",global.time,global.total_time);
         fflush(stdout);
         }
-    
+
     //movie write time
     if (global.time % global.movie_time == 0)
         write_cmovie_frame();
-        
+
     }
-    
+
 get_finishing_time();
-echo_running_time();
+double time_expired = echo_running_time();
+
+FILE * pFile;
+
+pFile = fopen ("../../verlet.in","a");
+fprintf (pFile, "%d %f\n", global.N_particles, time_expired);
+fclose (pFile);
 }
 
 
@@ -81,11 +87,11 @@ for(ii=0;ii<global.N_Verlet;ii++)
     //obtain the i,j from the Verlet list
     i = global.Verletlisti[ii];
     j = global.Verletlistj[ii];
-    
+
     //calculate the distance between the particles
     distance_squared_folded_PBC(global.particle_x[i],global.particle_y[i],
             global.particle_x[j],global.particle_y[j],&r2,&dx,&dy);
-    
+
     //the particles are close enough to interact
     if (r2<16.0)
         {
@@ -103,17 +109,17 @@ for(ii=0;ii<global.N_Verlet;ii++)
             //calculate the force
             f = 1/r2 * exp(-r / global.particle_particle_screening_length);
             }
-            
+
         //projection to the x,y axes
         f = f/r;
-        
+
         global.particle_fx[i] -= f*dx;
         global.particle_fy[i] -= f*dy;
-    
+
         global.particle_fx[j] += f*dx;
         global.particle_fy[j] += f*dy;
         }
-   
+
     }
 }
 
@@ -154,15 +160,15 @@ for(i=0;i<global.N_particles;i++)
     {
     dx = global.particle_fx[i] * global.dt;
     dy = global.particle_fy[i] * global.dt;
-    
+
     global.particle_x[i] += dx;
     global.particle_y[i] += dy;
-    
+
     global.particle_dx_so_far[i] += dx;
     global.particle_dy_so_far[i] += dy;
-  
+
     fold_particle_back_PBC(i);
-    
+
     global.particle_fx[i] = 0.0;
     global.particle_fy[i] = 0.0;
     }
@@ -223,7 +229,7 @@ for(i=0;i<global.N_particles;i++)
         {
         dr2 = global.particle_dx_so_far[i] * global.particle_dx_so_far[i] +
                 global.particle_dy_so_far[i] * global.particle_dy_so_far[i];
-        
+
         if (dr2>=global.Verlet_intershell_squared)
             {
             global.flag_to_rebuild_Verlet = 1;
@@ -245,17 +251,17 @@ if (global.N_Verlet_max==0)
     {
     //we are building the Verlet list for the first time in the simulation
     printf("Verlet list will be built for the first time\n");
-     
+
     estimation = global.N_particles/(double)global.SX/(double)global.SY;
     printf("System density is %.3lf\n",estimation);
-    
+
     estimation *= PI * global.Verlet_cutoff_distance * global.Verlet_cutoff_distance;
     printf("Particles in a R = %.2lf shell = %lf\n",
         global.Verlet_cutoff_distance,estimation);
-    
+
     global.N_Verlet_max = (int)estimation * global.N_particles / 2;
     printf("Estimated N_Verlet_max = %d\n",global.N_Verlet_max);
-    
+
     global.Verletlisti = (int *) malloc(global.N_Verlet_max * sizeof(int));
     global.Verletlistj = (int *) malloc(global.N_Verlet_max * sizeof(int));
     }
@@ -269,18 +275,18 @@ for(i=0;i<global.N_particles;i++)
         {
         distance_squared_folded_PBC(global.particle_x[i],global.particle_y[i],
             global.particle_x[j],global.particle_y[j],&dr2,&dx,&dy);
-            
+
         //if (global.time==0)
         //    if ((i==150)||(j==150)) printf("(%d %d %lf)\n",i,j,dr2);
-            
+
         if (dr2<36.0)
             {
             global.Verletlisti[global.N_Verlet] = i;
             global.Verletlistj[global.N_Verlet] = j;
-            
+
             //if (global.time==0)
             //if ((i==150)||(j==150)) printf("(%d %d)\n",i,j);
-            
+
             global.N_Verlet++;
             if (global.N_Verlet>=global.N_Verlet_max)
                 {
@@ -309,14 +315,14 @@ for(i=0;i<global.N_particles;i++)
 for(i=0;i<global.N_particles;i++)
  if (global.particle_direction[i]==1) global.particle_color[i] = 3;
  else global.particle_color[i] = 2;
- 
+
 for(i=0;i<global.N_Verlet;i++)
     {
     if (global.Verletlisti[i] == 30)
         global.particle_color[global.Verletlistj[i]] = 4;
     if (global.Verletlistj[i] == 30)
         global.particle_color[global.Verletlisti[i]] = 4;
-    
+
     }
 
 }

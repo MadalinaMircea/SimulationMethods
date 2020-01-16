@@ -7,6 +7,10 @@
 #define globaldata_h
 
 #include <stdio.h>
+#include <string.h>
+
+#include<cstring>
+using namespace std;
 
 struct object_struct
     {
@@ -46,6 +50,8 @@ struct global_struct
 
     int N_objects;
 
+    char* paths[3] = {"../../unoptimized1.mvi", "../../verlet1.mvi", "../../tabulated1.mvi"};
+
     //all objects in the movie file
     struct object_struct **objects;
 
@@ -53,7 +59,7 @@ struct global_struct
 
 extern struct global_struct global;
 
-void initialize_global_data(void);
+void initialize_global_data(int i);
 void open_movie_file(void);
 void dummy_read_cmovie_frame(void);
 void read_moviefile_data(void);

@@ -39,11 +39,13 @@ global.N_Verlet_max = 0;
 }
 
 //init the simulation box
-void init_simulation_box()
+void init_simulation_box(double sx, double sy)
 {
 printf("Initializing the simulation box\n");
-global.SX = 60.0;
-global.SY = 60.0;
+//global.SX = 60.0;
+//global.SY = 60.0;
+global.SX = sx;
+global.SY = sy;
 global.halfSX = global.SX/2.0;
 global.halfSY = global.SY/2.0;
 
@@ -51,10 +53,10 @@ printf("SX = %lf SY = %lf\n",global.SX,global.SY);
 }
 
 
-void init_particles()
+void init_particles(int particles)
 {
-global.N_particles = 800;
-
+//global.N_particles = 800;
+global.N_particles = particles;
 
 global.particle_x = (double *)malloc(global.N_particles*sizeof(double));
 global.particle_y = (double *)malloc(global.N_particles*sizeof(double));
@@ -173,7 +175,7 @@ printf("N_particles = %d placed\n",global.N_particles);
 
 void init_files()
 {
-global.moviefile = fopen("../../../particles.mvi","wb");
+global.moviefile = fopen("../../verlet.mvi","wb");
 if (global.moviefile == NULL)
     {
     printf("Could not create/open movie file\n");

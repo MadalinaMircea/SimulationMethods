@@ -21,3 +21,9 @@
 	"globaldata.h"
 	"drawing.h"
 
+1575814751 source:/home/madalina/Documents/Simulation Methods/Simulation3/Simulation3_plot/globaldata.cpp
+	"globaldata.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+

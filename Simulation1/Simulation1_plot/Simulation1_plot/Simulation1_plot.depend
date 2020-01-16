@@ -11,21 +11,20 @@
 1574334773 /home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/drawing.h
 	"globaldata.h"
 
-1574334817 /home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/globaldata.h
+1579105292 /home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/globaldata.h
 	<stdio.h>
+	<string.h>
+	<cstring>
 
-1575807564 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/globaldata.cpp
+1579105250 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/globaldata.cpp
 	"globaldata.h"
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
 
-1574339872 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/main.cpp
-	<math.h>
-	<stdio.h>
+1579115562 source:/home/madalina/Documents/Simulation Methods/Simulation1/Simulation1_plot/Simulation1_plot/main.cpp
 	<stdlib.h>
+	<iostream>
 	"globaldata.h"
 	"drawing.h"
-	<stdlib.h>
-	<stdio.h>
 

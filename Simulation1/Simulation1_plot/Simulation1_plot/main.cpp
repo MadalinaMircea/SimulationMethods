@@ -7,18 +7,56 @@
 
 // The OpenGL libraries, make sure to include the GLUT and OpenGL frameworks
 
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
+//#include <math.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//#include "globaldata.h"
+//#include "drawing.h"
+//
+//
+//int main(int argc, char **argv)
+//{
+//
+//    initialize_global_data();
+//
+//    read_moviefile_data();
+//
+//    init_glut();
+//    init_OpenGl();
+//
+//    start_main_loop_glut();
+//
+//    return 0;
+//}
 
+#include <stdlib.h>
+#include <iostream>
 #include "globaldata.h"
 #include "drawing.h"
+#define NUM_COMMANDS 4
 
-
-int main(int argc, char **argv)
+void plotGraph()
 {
+    char * commandsForGnuplot[] = {"set title \"Simulation Graph\"",
+    "set grid", "set term x11 solid lw 4",
+    "plot [0:2000] [0:2300] '../../unoptimized.in' with linespoints lc rgb 'orange', '../../verlet.in' with linespoints lc rgb 'blue', '../../tabulated.in' with linespoints lc rgb 'green'"};
+    FILE * gnuplotPipe = popen ("gnuplot -persistent", "w");
 
-    initialize_global_data();
+    int i;
+    for (i=0; i < NUM_COMMANDS; i++)
+    {
+      fprintf(gnuplotPipe, "%s \n", commandsForGnuplot[i]); //Send commands to gnuplot one by one.
+    }
+}
+
+void playMovie()
+{
+    int file = -1;
+    cout << "Give movie file\n\t'0'-unoptimized\n\t'1'-verlet\n\t'2'-tabulated\nFile: ";
+    cin >> file;
+
+    initialize_global_data(file);
 
     read_moviefile_data();
 
@@ -26,38 +64,34 @@ int main(int argc, char **argv)
     init_OpenGl();
 
     start_main_loop_glut();
+}
+
+
+int main()
+{
+//    bool keepGoing = true;
+//
+//    while(keepGoing)
+//    {
+        char input;
+        cout << "Give input: \n\t'0'-exit\n\t'1'-plot graph\n\t'2'-play movie\nInput:";
+
+        cin >> input;
+
+        switch(input)
+        {
+            case '0':
+                //keepGoing = false;
+                break;
+            case '1':
+                plotGraph();
+                break;
+            case '2':
+                playMovie();
+                break;
+        }
+//    }
 
     return 0;
 }
 
-
-//
-//#include <stdlib.h>
-//#include <stdio.h>
-//#define NUM_POINTS 5
-//#define NUM_COMMANDS 4
-//
-//int main()
-//{
-//    char * commandsForGnuplot[] = {"set title \"Simulation Graph\"", "set style fill solid", "set boxwidth 0.5", "plot 'data.temp' with boxes"};
-//    double xvals[NUM_POINTS] = {1.0, 2.0, 3.0, 4.0, 5.0};
-//    double yvals[NUM_POINTS] = {5.0 ,3.0, 1.0, 3.0, 5.0};
-//    FILE * temp = fopen("data.temp", "w");
-//    /*Opens an interface that one can use to send commands as if they were typing into the
-//     *     gnuplot command line.  "The -persistent" keeps the plot open even after your
-//     *     C program terminates.
-//     */
-//    FILE * gnuplotPipe = popen ("gnuplot -persistent", "w");
-//    int i;
-//    for (i=0; i < NUM_POINTS; i++)
-//    {
-//    fprintf(temp, "%lf %lf \n", xvals[i], yvals[i]); //Write the data to a temporary file
-//    }
-//
-//    for (i=0; i < NUM_COMMANDS; i++)
-//    {
-//    fprintf(gnuplotPipe, "%s \n", commandsForGnuplot[i]); //Send commands to gnuplot one by one.
-//    }
-//    return 0;
-//}
-//

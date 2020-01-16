@@ -9,9 +9,9 @@
 #include <stdlib.h>
 
 void init_simulation(void);
-void init_simulation_box(void);
+void init_simulation_box(double, double);
 
-void init_particles(void);
+void init_particles(int);
 void init_particles_randomly(void);
 
 void init_files(void);
