@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1572625733 source:/home/madalina/Documents/Simulation Methods/Simulation3/RandomSampling/main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1579710607 source:/home/adela/Simulation3/RandomSampling/main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
